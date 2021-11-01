@@ -4,7 +4,7 @@
 # Created   : 01/11/2021 20:31
 # Author    : M.Houston
 # Version   : v1.0.0
-# Description:  Script to connect to local VM via SSH
+# Description:  Script to connect to local VM via SSH and verify the connection
 
 # (c) 2021 Malcolm Houston
 # Available under GNU Public License (GPL)
