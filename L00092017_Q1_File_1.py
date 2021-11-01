@@ -13,16 +13,19 @@
 import paramiko
 
 def start_connection():
+    # Define the paramenters for the connection
     u_name = 'l00092017'
     pswd = 'l00092017'
     port = 22
     r_ip = '198.162.15.131'
 
+    # Initialise the SSH Client
     myconn = paramiko.SSHClient()
-    myconn.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    myconn.set_missing_host_key_policy(paramiko.AutoAddPolicy()) #Auto accept the keys
 
-    session = myconn.connect(r_ip, username=u_name, password=pswd, port=port)
+    session = myconn.connect(r_ip, username=u_name, password=pswd, port=port) # Pass parameters into the connection
 
+    # Retrieve the connection details from the remote computer
     remote_cmd = 'ifconfig'
     (stdin, stdout, stderr) = myconn.exec_command(remote_cmd)
     print("{}".format(stdout.read()))
@@ -34,9 +37,9 @@ if __name__ == '__main__':
     '''
     This is the main function
     
-    This will connect to local VM using SSH
+    This will start the SSH Connection to local VM using SSH
     
-    Parameters: username, password
+    Parameters: none
     
     returns: none
     
