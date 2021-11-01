@@ -10,28 +10,6 @@
 # Available under GNU Public License (GPL)
 #-------------------------------------------------------
 '''
-import paramiko
-
-def start_connection():
-    # Define the paramenters for the connection
-    u_name = 'l00092017'
-    pswd = 'l00092017'
-    port = 22
-    r_ip = '198.162.15.131'
-
-    # Initialise the SSH Client
-    myconn = paramiko.SSHClient()
-    myconn.set_missing_host_key_policy(paramiko.AutoAddPolicy()) #Auto accept the keys
-
-    session = myconn.connect(r_ip, username=u_name, password=pswd, port=port) # Pass parameters into the connection
-
-    # Retrieve the connection details from the remote computer
-    remote_cmd = 'ifconfig'
-    (stdin, stdout, stderr) = myconn.exec_command(remote_cmd)
-    print("{}".format(stdout.read()))
-    print("{}".format(type(myconn)))
-    print("Options available to deal with the connectios are many like\n{}".format(dir(myconn)))
-    myconn.close()
 
 if __name__ == '__main__':
     '''
@@ -44,4 +22,16 @@ if __name__ == '__main__':
     returns: none
     
 '''
-    start_connection()
+    import paramiko
+
+    host = "192.168.15.132"
+    port = 22
+    username = "l00092017"
+    password = "l00092017"
+
+    command = "ls"
+
+    ssh = paramiko.SSHClient()
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh.connect(host, port, username, password)
+
