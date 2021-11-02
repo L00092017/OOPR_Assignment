@@ -42,6 +42,6 @@ for res in soup.find_all("div",{"class":"section_header"}):
 print(headers)
 
 # Export list of headers to a CSV file
-with open('header_list', 'w', newline='') as f:
+with open('header_list.csv', 'w', newline='') as f:
     write = csv.writer(f)
     write.writerow(headers)
