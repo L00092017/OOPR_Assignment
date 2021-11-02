@@ -25,7 +25,6 @@ if __name__ == '__main__':
     # Import required modules
     import paramiko
 
-
     # Define function for ssh connection and run commands
     def ssh_connection():
 
