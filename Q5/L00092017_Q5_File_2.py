@@ -23,3 +23,19 @@ if __name__ == '__main__':
     none
     
 '''
+import paramiko
+import time
+def ssh_connection():
+global user_file
+global cmd_file
+	try: #selected_user_file = open(user_file, 'r')
+		ip = "192.168.37.143"
+		user_name="l0012345".rstrip("\n")
+		user_password="l0012345".rstrip("\n")
+		session = paramiko.SSHClient()
+
+session.set_missing_host_key_policy(paramiko.AutoAddPolicy)
+		session.connect(ip.rstrip("\n"),
+username=user_name, password=user_password)
+		connection = session.invoke_shell()
+		session.exec_command("mkdir This\n")
