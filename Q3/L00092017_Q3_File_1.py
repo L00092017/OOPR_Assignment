@@ -22,16 +22,18 @@ if __name__ == '__main__':
     returns: Headers
     
 '''
-# Import packages
+# Import required packages
 import requests
 from bs4 import BeautifulSoup
 
-# Define URL to parse
-URL = "http://192.168.15.132"
-page = requests.get(URL)
-# Run parser on the URL
-soup = BeautifulSoup(page.content, 'html.parser')
+headers=[] # Define list variable to empty
 
-# Loop through the URL and extract any Div class that contains the text "header"
-for EachPart in soup.select('div[class*="header"]'):
-    print(EachPart.get_text()) # Print out the header text
+response = requests.get("http://192.168.15.132") # Define URL to parse
+soup = BeautifulSoup(response.text, "html.parser")
+
+# Loop through each class called "section_header" and add to list removing \n
+for res in soup.find_all("div",{"class":"section_header"}):
+    headers.append(res.text.strip())
+
+# print list of headers
+print(headers)
