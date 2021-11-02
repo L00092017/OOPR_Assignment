@@ -4,7 +4,8 @@
 # Created   : 01/11/2021 23:20
 # Author    : M.Houston
 # Version   : v1.0.0
-# Description:  This script will parse a webpage and extract the Header text.
+# Description:  This script will parse a webpage and extract the text from
+                any section_header class and export result to csv file.
 
 # (c) 2021 Malcolm Houston
 # Available under GNU Public License (GPL)
@@ -15,14 +16,16 @@ if __name__ == '__main__':
     '''
     This is the main function
     
-    This will scrape the Apache2 Default landing page on a VM for the Headers and print them out
+    This will scrape the Apache2 Default landing page on a VM for the headers text,
+    print out and export to a csv file.
     
     Parameters: URL
     
-    returns: Headers
+    returns: headers
     
 '''
 # Import required packages
+import csv
 import requests
 from bs4 import BeautifulSoup
 
@@ -37,3 +40,8 @@ for res in soup.find_all("div",{"class":"section_header"}):
 
 # print list of headers
 print(headers)
+
+# Export list of headers to a CSV file
+with open('header_list', 'w', newline='') as f:
+    write = csv.writer(f)
+    write.writerow(headers)
