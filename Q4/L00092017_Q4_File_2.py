@@ -1,6 +1,6 @@
 '''
 #--------------------------------------------------------
-# File      : L00092017_Q4_File_1.py
+# File      : L00092017_Q4_File_2.py
 # Created   : 02/11/2021 10:38
 # Author    : M.Houston
 # Version   : v1.0.0
@@ -38,9 +38,13 @@ def is_port_open(host, port):
 
 host = input("Enter the host IP Address : ") # Get the host IP from the user
 
-for port in range(21,80): # Iterate over ports, from 21 to 81
+for port in range(21,81): # Iterate over ports, from 21 to 81
     if is_port_open(host, port):
         if port == 22: # Return SSH if Port 22 open
             print(f"SSH:{port} is open     ")
-    elif port == 80: # Return HTTP if Port 80 open
+        elif port == 80: # Return HTTP if Port 80 open
             print(f"HTTP:{port} is open     ")
+        else:
+            print(f"{port} is open     ")
+    else:
+        print(f"Port {port} is closed     ")
