@@ -22,16 +22,27 @@ if __name__ == '__main__':
     returns: none
     
 '''
+    # Import required modules
     import paramiko
 
-    host = "192.168.15.132"
-    port = 22
-    username = "l00092017"
-    password = "l00092017"
 
-    command = "ls"
+    # Define function for ssh connection and run commands
+    def ssh_connection():
 
-    ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(host, port, username, password)
+        try:  # attempt connection to VM
+            # Define variables for use in the connection
+            ip = "192.168.15.132"
+            user_name = "l00092017".rstrip("\n")
+            user_password = "l00092017".rstrip("\n")
+            # Create the SSH connection to the VM
+            ssh = paramiko.SSHClient()
+            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy)
+            ssh.connect(ip, username=user_name, password=user_password)
+            print("Connected to: ", ip)  # Output connected status
 
+        # Exception error if SSH fails authentication
+        except paramiko.BadAuthenticationType as e:
+            print(e)
+            sys.exit(1)
+
+ssh_connection()
