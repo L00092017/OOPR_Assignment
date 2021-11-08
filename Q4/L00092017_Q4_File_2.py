@@ -1,4 +1,4 @@
-'''
+"""
 #--------------------------------------------------------
 # File      : L00092017_Q4_File_2.py
 # Created   : 02/11/2021 10:38
@@ -10,7 +10,7 @@
 # (c) 2021 Malcolm Houston
 # Available under GNU Public License (GPL)
 #-------------------------------------------------------
-'''
+"""
 if __name__ == '__main__':
     '''
     This is the main function
@@ -25,26 +25,31 @@ if __name__ == '__main__':
 # Import required modules
 import socket
 
+
 # Define function to test for open ports
 def is_port_open(host, port):
-    s = socket.socket() # creates a new socket
+    s = socket.socket()  # creates a new socket
+
     try:
-        s.connect((host, port)) # tries to connect to host using the ports
-        s.settimeout(0.1) # improve speed of scan
+        s.connect((host, port))  # tries to connect to host using the ports
+    s.settimeout(0.1)  # improve speed of scan
     except:
-        return False # If cannot connect because port is closed, return False
+    return False  # If cannot connect because port is closed, return False
     else:
-        return True # If the connection was established, port is open! return True
+    return True  # If the connection was established, port is open! return True
 
-host = input("Enter the host IP Address : ") # Get the host IP from the user
+    host = input("Enter the host IP Address : ")  # Get the host IP from the user
 
-for port in range(21,81): # Iterate over ports, from 21 to 81
-    if is_port_open(host, port):
-        if port == 22: # Return SSH if Port 22 open
-            print(f"SSH:{port} is open     ")
-        elif port == 80: # Return HTTP if Port 80 open
-            print(f"HTTP:{port} is open     ")
+    for port in range(21, 81):  # Iterate over ports, from 21 to 81
+        if is_port_open(host, port):
+            if port == 22:  # Return SSH if Port 22 open
+                print(f"SSH:{port} is open     ")
+            elif port == 80:  # Return HTTP if Port 80 open
+                print(f"HTTP:{port} is open     ")
+            else:
+                print(f"{port} is open     ")
         else:
-            print(f"{port} is open     ")
-    else:
-        print(f"Port {port} is closed     ")
+            print(f"Port {port} is closed     ")
+
+
+is_port_open()

@@ -1,4 +1,4 @@
-'''
+"""
 #--------------------------------------------------------
 # File      : L00092017_Q3_File_2.py
 # Created   : 01/11/2021 23:20
@@ -10,7 +10,7 @@
 # (c) 2021 Malcolm Houston
 # Available under GNU Public License (GPL)
 #-------------------------------------------------------
-'''
+"""
 
 if __name__ == '__main__':
     '''
@@ -29,13 +29,13 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 
-headers=[] # Define list variable to empty
+headers = []  # Define list variable to empty
 
-response = requests.get("http://192.168.15.132") # Define URL to parse
+response = requests.get("http://192.168.15.132")  # Define URL to parse
 soup = BeautifulSoup(response.text, "html.parser")
 
 # Loop through each class called "section_header" and add to list removing \n
-for res in soup.find_all("div",{"class":"section_header"}):
+for res in soup.find_all("div", {"class": "section_header"}):
     headers.append(res.text.strip())
 
 # print list of headers
