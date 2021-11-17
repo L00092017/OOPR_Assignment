@@ -20,6 +20,8 @@ import sys
 def ssh_connection():
     """
 
+    This function will connect to VM via SSH and run some commands
+
     """
     try:
         ip = "192.168.15.132"
@@ -86,7 +88,7 @@ if __name__ == '__main__':
     """
 	This is the main function
 
-	This will set a folder structure and install curl on remote VM
+	This will call the ssh_connection function to set a folder structure and install curl on remote VM
 
 	Parameters: none
 
